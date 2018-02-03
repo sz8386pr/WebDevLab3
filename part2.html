@@ -1,0 +1,22 @@
+<body>
+
+<p id="pixels"></p>
+
+<script>
+  var pixel_numbers = document.getElementById("pixels");
+  var width_of_window = window.innerWidth;
+  var height_of_window = window.innerHeight;
+  pixel_numbers.innerHTML = "Pixels = " + width_of_window * height_of_window;
+
+  window.addEventListener("resize", windowWasResized);
+  function windowWasResized() {
+    alert("You re-sized the window!");
+
+    pixel_numbers = document.getElementById("pixels");
+    width_of_window = window.innerWidth;
+    height_of_window = window.innerHeight;
+    pixel_numbers.innerHTML = "Pixels = " + width_of_window * height_of_window;
+  }
+</script>
+
+</body>

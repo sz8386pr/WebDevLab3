@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavsScript Functions with Arguments</title>
+
+  <style>
+
+    #randomColor {
+      height : 200px;
+      width : 300px;
+      font-size: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      width: 300px;
+    }
+
+  </style>
+
+
+</head>
+<body>
+
+
+<!--Can provide arguments to JavaScript functions when called from code
+The argument "this" sends this element as an argument - in this case, the
+button elements sends itself as an argument. -->
+<div>
+  <button id='randomColor' onclick="changeToRandomColor(this)">Click me for a random color</button>
+</div>
+<div id='hexcode'>Hex code</div>
+<div>
+  <button id='addButton' onclick='addToTable()'>Click to Add</button>
+</div>
+
+<table id='colorTable'>
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Hex Code</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+
+  var added = null;
+
+  function changeToRandomColor(element) {
+
+    element.style.backgroundColor = randomColor();
+
+  }
+
+  // Generate random 6 digit hexadecimal number for the color. Reference from https://www.paulirish.com/2009/random-hex-color-code-snippets/
+  function randomColor() {
+
+    var hexColor = '#' + Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
+    hexcode.innerText = hexColor;
+    added = false;
+    console.log(hexColor);
+
+    return hexColor
+  }
+
+
+  // Adds the the color and corresponding hexcode onto the table. Reference from https://www.w3schools.com/jsref/met_table_insertrow.asp
+  function addToTable() {
+    var hexColor = hexcode.innerText
+    if (added === null) {
+      alert("Generate random color first!")
+    }
+    else if (added === false){
+      var table = document.getElementById("colorTable");
+      var tbody = table.getElementsByTagName("tbody")[0];
+      var row = document.createElement("tr");
+      var cell1 = document.createElement("td");
+      var cell2 = document.createElement("td");
+      cell1.style.backgroundColor = hexColor;
+      cell2.innerHTML = hexColor;
+      table.appendChild(row);
+      row.appendChild(cell1);
+      row.appendChild(cell2);
+      added = true;
+    }
+    else{
+      alert(hexColor + " is already added to the table!")
+    }
+  }
+
+</script>
+
+</body>
+</html>

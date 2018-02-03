@@ -1,0 +1,37 @@
+<body>
+  <form>
+    <P>Please enter text and click Add button to add to the list (Less than 50 characters)</P>
+    <input type="text" id="user_text">
+    <button type="button" id="add">Add to list</button>
+  </form>
+
+  <h1>User Text Unordered List</h1>
+
+  <ul id="my_list"></ul>
+
+  <script>
+
+    document.getElementById('add').addEventListener('click', addToList);
+
+    function addToList() {
+
+      var new_text = document.getElementById("user_text").value;
+
+      if (new_text.length > 50) {
+        alert("You have too many characters!(Less than 50 please)")
+      }
+      else if (new_text.length <= 0) {
+        alert("There are no texts!")
+      }
+      else {
+        var my_list_element = document.getElementById("my_list");
+        var new_list_item = document.createElement("li");
+        new_list_item.innerHTML = new_text;
+        my_list_element.appendChild(new_list_item);
+        document.getElementById('user_text').value = ''
+      }
+
+    }
+  </script>
+
+</body>

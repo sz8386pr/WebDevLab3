@@ -1,0 +1,21 @@
+<body>
+<p>Star Wars, <span class="rating">4 stars</span></p>
+
+<p>Back to the Future, <span class="rating">5 stars</span></p>
+
+  <script>
+    var ratings = document.getElementsByClassName("rating");
+
+    for(var i = 0; i < ratings.length; i++){
+      var number_of_stars = ratings[i].innerText.charAt(0); // Receive the first character from the string
+      var stars = '';
+      // Convert to unicode stars
+      for(var s = 0; s < number_of_stars; s++){
+        stars += "\u2605"
+      }
+      ratings[i].innerText=stars; // Set the text to unicode stars
+    }
+
+  </script>
+
+</body>
